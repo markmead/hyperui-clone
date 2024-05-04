@@ -1,9 +1,11 @@
 import Banner from '@/components/Banner'
 import Grid from '@/components/Grid'
 
-import { components } from '@/data/components'
+import { listComponents } from '@/services/components'
 
 async function getComponents() {
+  const components = await listComponents()
+
   return components
 }
 
