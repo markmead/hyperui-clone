@@ -18,7 +18,7 @@ export default async function Page() {
         user interfaces.
       </Banner>
 
-      <Grid components={components} />
+      <Grid components={components} filterable />
     </>
   )
 }

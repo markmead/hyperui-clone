@@ -1,0 +1,92 @@
+export const components = [
+  {
+    title: 'Alert',
+    count: 5,
+    href: '/alert',
+    category: 'application',
+  },
+  {
+    title: 'Avatar',
+    count: 5,
+    href: '/avatar',
+    category: 'application',
+  },
+  {
+    title: 'Badge',
+    count: 5,
+    href: '/badge',
+    category: 'application',
+  },
+  {
+    title: 'Button',
+    count: 5,
+    href: '/button',
+    category: 'marketing',
+  },
+  {
+    title: 'Card',
+    count: 5,
+    href: '/card',
+    category: 'marketing',
+  },
+  {
+    title: 'Checkbox',
+    count: 5,
+    href: '/checkbox',
+    category: 'application',
+  },
+  {
+    title: 'Dropdown',
+    count: 5,
+    href: '/dropdown',
+    category: 'application',
+  },
+  {
+    title: 'Input',
+    count: 5,
+    href: '/input',
+    category: 'application',
+  },
+  {
+    title: 'Modal',
+    count: 5,
+    href: '/modal',
+    category: 'marketing',
+  },
+  {
+    title: 'Radio',
+    count: 5,
+    href: '/radio',
+    category: 'application',
+  },
+  {
+    title: 'Select',
+    count: 5,
+    href: '/select',
+    category: 'marketing',
+  },
+  {
+    title: 'Switch',
+    count: 5,
+    href: '/switch',
+    category: 'application',
+  },
+  {
+    title: 'Tabs',
+    count: 5,
+    href: '/tabs',
+    category: 'marketing',
+  },
+  {
+    title: 'Textarea',
+    count: 5,
+    href: '/textarea',
+    category: 'application',
+  },
+  {
+    title: 'Tooltip',
+    count: 5,
+    href: '/tooltip',
+    category: 'marketing',
+  },
+]
