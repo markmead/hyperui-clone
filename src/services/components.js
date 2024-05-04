@@ -2,6 +2,7 @@ import matter from 'gray-matter'
 
 import { join } from 'path'
 import { promises as fs } from 'fs'
+import { serialize } from 'next-mdx-remote/serialize'
 
 export async function listComponents() {
   const path = join(process.cwd(), '/src/data/components')
@@ -26,4 +27,18 @@ export async function listComponents() {
   )
 
   return components
+}
+
+export async function listComponent(id) {
+  const path = join(process.cwd(), `/src/data/components/${id}.mdx`)
+  const content = await fs.readFile(path, 'utf8')
+
+  const { content: mdx, data } = matter(content)
+
+  const source = await serialize(mdx)
+
+  return {
+    ...data,
+    source,
+  }
 }
