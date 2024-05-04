@@ -8,16 +8,6 @@ const components = {
   List,
 }
 
-export async function generateStaticParams() {
-  const components = await listComponents()
-
-  return components.map((component) => ({
-    params: {
-      id: component.id,
-    },
-  }))
-}
-
 async function getComponent(id) {
   const component = await listComponent(id)
 
