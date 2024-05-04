@@ -2,8 +2,11 @@ import { listComponent, listComponents } from '@/services/components'
 
 import Banner from '@/components/Banner'
 import Renderer from '@/components/Renderer'
+import List from '@/components/List'
 
-const components = {}
+const components = {
+  List,
+}
 
 export async function generateStaticParams() {
   const components = await listComponents()
@@ -24,13 +27,25 @@ async function getComponent(id) {
 export default async function Page({ params }) {
   const component = await getComponent(params.id)
 
+  const data = {
+    ...component,
+    components: Object.entries(component.components).map(([id, component]) => {
+      return {
+        ...component,
+        id,
+      }
+    }),
+  }
+
   return (
     <>
       <Banner title={component.seo.title} subtitle={component.seo.description} />
 
-      <div className="prose">
-        <Renderer source={component.source} components={components} />
-      </div>
+      <section className="py-8">
+        <div className="prose">
+          <Renderer source={component.source} components={components} scope={data} />
+        </div>
+      </section>
     </>
   )
 }
