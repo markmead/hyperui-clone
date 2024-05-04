@@ -12,7 +12,7 @@ export default function Header() {
           <ul className="flex gap-4">
             <li>
               <Link
-                href="/components/application"
+                href="/components?category=application"
                 className="text-sm font-medium transition hover:opacity-75"
               >
                 Application
@@ -21,7 +21,7 @@ export default function Header() {
 
             <li>
               <Link
-                href="/components/marketing"
+                href="/components?category=marketing"
                 className="text-sm font-medium transition hover:opacity-75"
               >
                 Marketing
