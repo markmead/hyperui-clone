@@ -1,10 +1,10 @@
 import Link from 'next/link'
 
-export default function Card({ title, count, href }) {
+export default function Card({ title, count, id }) {
   const countSuffix = count === 1 ? 'component' : 'components'
 
   return (
-    <Link href={href}>
+    <Link href={`/components/${id}`}>
       <div className="rounded-lg border border-gray-100 p-4 transition hover:scale-105">
         <h3 className="text-lg font-medium">{title}</h3>
 
