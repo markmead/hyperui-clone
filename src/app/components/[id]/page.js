@@ -23,7 +23,7 @@ export default async function Page({ params }) {
       return {
         ...item,
         id: params.id,
-        container: component.container,
+        container: item.container || component.container,
       }
     }),
   }
