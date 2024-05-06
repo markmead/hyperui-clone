@@ -110,7 +110,9 @@ export default function Preview({ title, id, container, index }) {
             <div key={name}>
               <button
                 onClick={() => setBreakpoint(width)}
-                className="inline-block rounded-md border border-gray-200 px-4 py-2 text-sm font-medium"
+                className={`inline-block rounded-md border border-gray-200 px-4 py-2 text-sm font-medium ${
+                  width === breakpoint ? 'bg-gray-200' : 'bg-white'
+                }`}
               >
                 {name}
               </button>
