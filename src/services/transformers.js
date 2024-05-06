@@ -1,4 +1,4 @@
-export function toHtml(code, container) {
+export function toHtml(code, container = 'relative') {
   return `
     <html lang="en">
       <head>
