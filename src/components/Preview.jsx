@@ -4,7 +4,7 @@ import { useCopyToClipboard } from 'react-use'
 
 import { toHtml, toVue, toReact } from '@/services/transformers'
 
-export default function Preview({ title, id, index }) {
+export default function Preview({ title, id, container, index }) {
   const [initial, setInitial] = useState('')
   const [code, setCode] = useState('')
   const [html, setHtml] = useState('')
@@ -39,7 +39,7 @@ export default function Preview({ title, id, index }) {
 
       setInitial(html)
       setCode(html)
-      setHtml(toHtml(html))
+      setHtml(toHtml(html, container))
     }
 
     getComponent()
