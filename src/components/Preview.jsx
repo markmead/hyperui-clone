@@ -5,6 +5,7 @@ import { toHtml } from '@/services/transformers'
 export default function Preview({ title, id, index }) {
   const [code, setCode] = useState('')
   const [html, setHtml] = useState('')
+  const [isPreview, setIsPreview] = useState(true)
 
   useEffect(() => {
     async function getComponent() {
@@ -21,7 +22,15 @@ export default function Preview({ title, id, index }) {
   return (
     <div>
       <h2>{title}</h2>
-      <iframe srcDoc={html} className="w-full" />
+      <button onClick={() => setIsPreview(!isPreview)}>
+        {isPreview ? 'Show Code' : 'Show Preview'}
+      </button>
+
+      {isPreview ? (
+        <iframe srcDoc={html} className="w-full" />
+      ) : (
+        <pre className="w-full">{code}</pre>
+      )}
     </div>
   )
 }
