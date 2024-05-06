@@ -117,7 +117,7 @@ export default function Preview({ title, id, container, index }) {
 
       <div className="rounded-md ring-2 ring-gray-200">
         {isPreview ? (
-          <iframe srcDoc={html} className="w-full" style={{ maxWidth: breakpoint }} />
+          <iframe srcDoc={html} className="h-[500px] w-full" style={{ maxWidth: breakpoint }} />
         ) : (
           <pre className="w-full">{code}</pre>
         )}
