@@ -32,7 +32,7 @@ export default async function Page({ params }) {
       <Banner title={component.seo.title} subtitle={component.seo.description} />
 
       <section className="py-8">
-        <div className="prose">
+        <div className="prose max-w-none">
           <Renderer source={component.source} components={components} scope={data} />
         </div>
       </section>

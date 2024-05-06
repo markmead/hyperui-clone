@@ -40,48 +40,55 @@ export default function Preview({ title, id, index }) {
   }, [type])
 
   return (
-    <div>
-      <h2>{title}</h2>
+    <div className="space-y-4">
+      <h2 className="text-xl font-medium">{title}</h2>
 
-      <button onClick={() => setIsPreview(!isPreview)}>
-        {isPreview ? 'Show Code' : 'Show Preview'}
-      </button>
+      <div className="flex items-center gap-4">
+        <button
+          onClick={() => setIsPreview(!isPreview)}
+          className="inline-block rounded-md border border-gray-200 px-4 py-2 text-sm font-medium"
+        >
+          {isPreview ? 'Show Code' : 'Show Preview'}
+        </button>
 
-      <div>
-        <span class="inline-flex overflow-hidden rounded-md border bg-white shadow-sm">
-          <button
-            onClick={() => copyToClipboard(code)}
-            className="inline-block border-r px-4 py-2 text-sm font-medium focus:relative focus:bg-gray-50 focus:outline-none focus:ring-0"
-          >
-            Copy to Clipboard
-          </button>
-
-          <div>
-            <label htmlFor="type" className="sr-only">
-              Type
-            </label>
-
-            <select
-              id="type"
-              className="border-none text-sm font-medium focus:relative focus:bg-gray-50 focus:outline-none focus:ring-0"
-              value={type}
-              onChange={(event) => setType(event.target.value)}
+        <div>
+          <span className="inline-flex overflow-hidden rounded-md border border-gray-200 bg-white">
+            <button
+              onClick={() => copyToClipboard(code)}
+              className="inline-block border-r px-4 py-2 text-sm font-medium"
             >
-              <option value="html">HTML</option>
-              <option value="react">React</option>
-              <option value="vue">Vue</option>
-            </select>
-          </div>
-        </span>
+              Copy to Clipboard
+            </button>
 
-        {state.error && <p>Unable to copy value: {state.error.message}</p>}
+            <div>
+              <label htmlFor="type" className="sr-only">
+                Type
+              </label>
+
+              <select
+                id="type"
+                className="border-none text-sm font-medium"
+                value={type}
+                onChange={(event) => setType(event.target.value)}
+              >
+                <option value="html">HTML</option>
+                <option value="react">React</option>
+                <option value="vue">Vue</option>
+              </select>
+            </div>
+          </span>
+
+          {state.error && <p>Unable to copy value: {state.error.message}</p>}
+        </div>
       </div>
 
-      {isPreview ? (
-        <iframe srcDoc={html} className="w-full" />
-      ) : (
-        <pre className="w-full">{code}</pre>
-      )}
+      <div className="rounded-md ring-2 ring-gray-200">
+        {isPreview ? (
+          <iframe srcDoc={html} className="w-full" style={{ maxWidth: '100%' }} />
+        ) : (
+          <pre className="w-full">{code}</pre>
+        )}
+      </div>
     </div>
   )
 }
