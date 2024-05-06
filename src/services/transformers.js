@@ -1,4 +1,4 @@
-export function toHtml(code) {
+export function toHtml(code, container) {
   return `
     <html lang="en">
       <head>
@@ -11,7 +11,7 @@ export function toHtml(code) {
 
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
       </head>
-      <body>
+      <body class="${container}">
         ${code}
       </body>
     </html>

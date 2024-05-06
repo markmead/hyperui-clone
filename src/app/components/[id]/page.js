@@ -19,10 +19,11 @@ export default async function Page({ params }) {
 
   const data = {
     ...component,
-    components: Object.entries(component.components).map(([_, component]) => {
+    components: Object.entries(component.components).map(([_, item]) => {
       return {
-        ...component,
+        ...item,
         id: params.id,
+        container: component.container,
       }
     }),
   }
