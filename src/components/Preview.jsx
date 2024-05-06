@@ -9,7 +9,7 @@ export default function Preview({ title, id, container, index }) {
   const [code, setCode] = useState('')
   const [html, setHtml] = useState('')
   const [type, setType] = useState('html')
-  const [breakpoint, setBreakpoint] = useState('1024px')
+  const [breakpoint, setBreakpoint] = useState('100%')
   const [isPreview, setIsPreview] = useState(true)
   const [state, copyToClipboard] = useCopyToClipboard()
 
@@ -29,6 +29,10 @@ export default function Preview({ title, id, container, index }) {
     {
       name: 'Large',
       width: '1024px',
+    },
+    {
+      name: 'Full',
+      width: '100%',
     },
   ]
 
