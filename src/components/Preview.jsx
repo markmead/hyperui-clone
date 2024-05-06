@@ -9,8 +9,28 @@ export default function Preview({ title, id, index }) {
   const [code, setCode] = useState('')
   const [html, setHtml] = useState('')
   const [type, setType] = useState('html')
+  const [breakpoint, setBreakpoint] = useState('1024px')
   const [isPreview, setIsPreview] = useState(true)
   const [state, copyToClipboard] = useCopyToClipboard()
+
+  const breakpoints = [
+    {
+      name: 'Mobile',
+      width: '340px',
+    },
+    {
+      name: 'Small',
+      width: '640px',
+    },
+    {
+      name: 'Medium',
+      width: '768px',
+    },
+    {
+      name: 'Large',
+      width: '1024px',
+    },
+  ]
 
   useEffect(() => {
     async function getComponent() {
@@ -80,11 +100,24 @@ export default function Preview({ title, id, index }) {
 
           {state.error && <p>Unable to copy value: {state.error.message}</p>}
         </div>
+
+        <div className="flex flex-1 items-center justify-end gap-2">
+          {breakpoints.map(({ name, width }) => (
+            <div key={name}>
+              <button
+                onClick={() => setBreakpoint(width)}
+                className="inline-block rounded-md border border-gray-200 px-4 py-2 text-sm font-medium"
+              >
+                {name}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="rounded-md ring-2 ring-gray-200">
         {isPreview ? (
-          <iframe srcDoc={html} className="w-full" style={{ maxWidth: '100%' }} />
+          <iframe srcDoc={html} className="w-full" style={{ maxWidth: breakpoint }} />
         ) : (
           <pre className="w-full">{code}</pre>
         )}
