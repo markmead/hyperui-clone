@@ -14,10 +14,10 @@ export default async function Page() {
 
   return (
     <>
-      <Banner title="SuperUI" subtitle="A Tailwind CSS UI Kit">
-        SuperUI is a collection of components and templates built with Tailwind CSS. It's designed
-        to showcase the power of Tailwind CSS and how it can be used to build beautiful, responsive
-        user interfaces.
+      <Banner title="Component Search" subtitle="Find Your Next Component">
+        Our library includes a wide variety of components, designed to meet the needs of any
+        project. Whether you're building a simple blog or a complex web app, you're sure to find the
+        perfect component to enhance your site's functionality and aesthetics.
       </Banner>
 
       <Grid components={components} filterable />
