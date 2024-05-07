@@ -10,6 +10,21 @@ export function toHtml(code, container = 'relative') {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
         <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            const links = [...document.querySelectorAll('a')]
+            const forms = [...document.querySelectorAll('form')]
+
+            links.forEach(function (link) {
+              link.addEventListener('click', (e) => e.preventDefault())
+            })
+
+            forms.forEach(function (form) {
+              form.addEventListener('submit', (e) => e.preventDefault())
+            })
+          })
+        </script>
       </head>
       <body class="${container}">
         ${code}
