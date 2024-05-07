@@ -125,7 +125,7 @@ export default function Preview({ title, id, container, index }) {
         {isPreview ? (
           <iframe
             srcDoc={html}
-            className="h-[500px] w-full bg-white"
+            className="h-[500px] w-full bg-white transition-[max-width] duration-300"
             style={{ maxWidth: breakpoint }}
           />
         ) : (
