@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier '{src,public}/**/*.{css,js,jsx,mdx,html}' --write"
+    "format": "prettier '**/*.{css,js,jsx,mdx,html}' --write"
   },
   "dependencies": {
     "next": "14.2.3",
