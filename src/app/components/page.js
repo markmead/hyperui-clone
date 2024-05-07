@@ -1,12 +1,31 @@
 import Banner from '@/components/Banner'
 import Grid from '@/components/Grid'
 
+import { ogMeta, twitterMeta } from '@/data/metadata'
 import { listComponents } from '@/services/components'
 
 async function getComponents() {
   const components = await listComponents()
 
   return components
+}
+
+export const metadata = {
+  title: 'Application and Marketing Components | SuperUI',
+  description:
+    'View our collection of application and marketing components and templates built with Tailwind CSS.',
+  openGraph: {
+    ...ogMeta,
+    title: 'Application and Marketing Components | SuperUI',
+    description:
+      'View our collection of application and marketing components and templates built with Tailwind CSS.',
+  },
+  twitter: {
+    ...twitterMeta,
+    title: 'Application and Marketing Components | SuperUI',
+    description:
+      'View our collection of application and marketing components and templates built with Tailwind CSS.',
+  },
 }
 
 export default async function Page() {

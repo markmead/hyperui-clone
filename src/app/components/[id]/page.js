@@ -1,3 +1,4 @@
+import { ogMeta, twitterMeta } from '@/data/metadata'
 import { listComponent } from '@/services/components'
 
 import Renderer from '@/components/Renderer'
@@ -11,6 +12,25 @@ async function getComponent(id) {
   const component = await listComponent(id)
 
   return component
+}
+
+export async function generateMetadata({ params }) {
+  const component = await listComponent(params.id)
+
+  return {
+    title: `${component.seo.title} | SuperUI`,
+    description: component.seo.description,
+    openGraph: {
+      ...ogMeta,
+      title: `${component.seo.title} | SuperUI`,
+      description: component.seo.description,
+    },
+    twitter: {
+      ...twitterMeta,
+      title: `${component.seo.title} | SuperUI`,
+      description: component.seo.description,
+    },
+  }
 }
 
 export default async function Page({ params }) {
