@@ -129,9 +129,7 @@ export default function Preview({ title, id, container, index }) {
             style={{ maxWidth: breakpoint }}
           />
         ) : (
-          <div className="h-[500px] overflow-auto bg-white">
-            <pre>{code}</pre>
-          </div>
+          <pre className="h-[500px] overflow-auto bg-white p-4">{code}</pre>
         )}
       </div>
     </div>
