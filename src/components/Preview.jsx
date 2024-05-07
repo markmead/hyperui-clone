@@ -9,7 +9,7 @@ export default function Preview({ title, id, container, index }) {
   const [code, setCode] = useState('')
   const [html, setHtml] = useState('')
   const [type, setType] = useState('html')
-  const [breakpoint, setBreakpoint] = useState('1024px')
+  const [breakpoint, setBreakpoint] = useState('100%')
   const [isPreview, setIsPreview] = useState(true)
   const [state, copyToClipboard] = useCopyToClipboard()
 
@@ -29,6 +29,10 @@ export default function Preview({ title, id, container, index }) {
     {
       name: 'Large',
       width: '1024px',
+    },
+    {
+      name: 'Full',
+      width: '100%',
     },
   ]
 
@@ -106,7 +110,9 @@ export default function Preview({ title, id, container, index }) {
             <div key={name}>
               <button
                 onClick={() => setBreakpoint(width)}
-                className="inline-block rounded-md border border-gray-200 px-4 py-2 text-sm font-medium"
+                className={`inline-block rounded-md border border-gray-200 px-4 py-2 text-sm font-medium ${
+                  width === breakpoint ? 'bg-gray-200' : 'bg-white'
+                }`}
               >
                 {name}
               </button>
@@ -115,11 +121,15 @@ export default function Preview({ title, id, container, index }) {
         </div>
       </div>
 
-      <div className="rounded-md ring-2 ring-gray-200">
+      <div className="overflow-hidden rounded-md bg-gray-100 ring-2 ring-gray-200">
         {isPreview ? (
-          <iframe srcDoc={html} className="w-full" style={{ maxWidth: breakpoint }} />
+          <iframe
+            srcDoc={html}
+            className="h-[500px] w-full bg-white transition-[max-width] duration-300"
+            style={{ maxWidth: breakpoint }}
+          />
         ) : (
-          <pre className="w-full">{code}</pre>
+          <pre className="h-[500px] overflow-auto bg-white p-4">{code}</pre>
         )}
       </div>
     </div>

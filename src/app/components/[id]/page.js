@@ -1,6 +1,5 @@
-import { listComponent, listComponents } from '@/services/components'
+import { listComponent } from '@/services/components'
 
-import Banner from '@/components/Banner'
 import Renderer from '@/components/Renderer'
 import List from '@/components/List'
 
@@ -29,14 +28,10 @@ export default async function Page({ params }) {
   }
 
   return (
-    <>
-      <Banner title={component.seo.title} subtitle={component.seo.description} />
-
-      <section className="py-8">
-        <div className="prose max-w-none">
-          <Renderer source={component.source} components={components} scope={data} />
-        </div>
-      </section>
-    </>
+    <section className="py-8">
+      <div className="prose max-w-none">
+        <Renderer source={component.source} components={components} scope={data} />
+      </div>
+    </section>
   )
 }

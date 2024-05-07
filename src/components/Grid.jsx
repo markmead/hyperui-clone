@@ -30,30 +30,32 @@ export default function Grid({ components, filterable = false }) {
   }, [components, category, search])
 
   return (
-    <section className="space-y-4 py-8">
-      {filterable && (
-        <Filter
-          search={search}
-          category={category}
-          handleSetSearch={setSearch}
-          handleSetCategory={setCategory}
-        />
-      )}
+    <section className="py-8">
+      <div className="mx-auto max-w-5xl space-y-4">
+        {filterable && (
+          <Filter
+            search={search}
+            category={category}
+            handleSetSearch={setSearch}
+            handleSetCategory={setCategory}
+          />
+        )}
 
-      {filteredComponents.length ? (
-        <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-          {filteredComponents.map((component, index) => (
-            <li key={index}>
-              <Card {...component} />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div className="prose mx-auto text-center prose-p:mt-2 prose-lead:mb-0">
-          <p className="lead">No components found.</p>
-          <p>Try a different search query or category.</p>
-        </div>
-      )}
+        {filteredComponents.length ? (
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {filteredComponents.map((component, index) => (
+              <li key={index}>
+                <Card {...component} />
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <div className="prose mx-auto text-center prose-p:mt-2 prose-lead:mb-0">
+            <p className="lead">No components found.</p>
+            <p>Try a different search query or category.</p>
+          </div>
+        )}
+      </div>
     </section>
   )
 }
