@@ -3,8 +3,7 @@ import { useEffect, useState } from 'react'
 import { useCopyToClipboard } from 'react-use'
 
 import Prism from 'prismjs'
-
-require('prismjs/components/prism-jsx.min')
+import 'prismjs/components/prism-jsx'
 
 import { toHtml, toVue, toReact } from '@/services/transformers'
 
@@ -71,7 +70,9 @@ export default function Preview({ title, id, container, index }) {
     }
   }, [type])
 
-  useEffect(() => Prism.highlightAll(), [code])
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [isPreview, code, type])
 
   return (
     <div className="space-y-4">
