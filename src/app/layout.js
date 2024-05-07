@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import 'prismjs/themes/prism-okaidia.css'
 import '@/app/globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'

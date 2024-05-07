@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 
 import { useCopyToClipboard } from 'react-use'
 
+import Prism from 'prismjs'
+import 'prismjs/components/prism-jsx'
+
 import { toHtml, toVue, toReact } from '@/services/transformers'
 
 export default function Preview({ title, id, container, index }) {
@@ -10,6 +13,7 @@ export default function Preview({ title, id, container, index }) {
   const [html, setHtml] = useState('')
   const [type, setType] = useState('html')
   const [breakpoint, setBreakpoint] = useState('100%')
+  const [syntax, setSyntax] = useState('language-html')
   const [isPreview, setIsPreview] = useState(true)
   const [state, copyToClipboard] = useCopyToClipboard()
 
@@ -52,16 +56,23 @@ export default function Preview({ title, id, container, index }) {
   useEffect(() => {
     if (type === 'html') {
       setCode(initial)
+      setSyntax('language-html')
     }
 
     if (type === 'vue') {
       setCode(toVue(initial))
+      setSyntax('language-html')
     }
 
     if (type === 'react') {
       setCode(toReact(initial))
+      setSyntax('language-jsx')
     }
   }, [type])
+
+  useEffect(() => {
+    Prism.highlightAll()
+  }, [isPreview, code, type])
 
   return (
     <div className="space-y-4">
@@ -129,7 +140,9 @@ export default function Preview({ title, id, container, index }) {
             style={{ maxWidth: breakpoint }}
           />
         ) : (
-          <pre className="h-[500px] overflow-auto bg-white p-4">{code}</pre>
+          <pre className="h-[500px] bg-white">
+            <code className={syntax}>{code}</code>
+          </pre>
         )}
       </div>
     </div>
