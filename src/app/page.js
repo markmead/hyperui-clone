@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import Banner from '@/components/Banner'
 import Grid from '@/components/Grid'
 
@@ -20,7 +22,9 @@ export default async function Page() {
         user interfaces.
       </Banner>
 
-      <Grid components={components} />
+      <Suspense>
+        <Grid components={components} />
+      </Suspense>
     </>
   )
 }

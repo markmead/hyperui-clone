@@ -1,3 +1,5 @@
+import { Suspense } from 'react'
+
 import Banner from '@/components/Banner'
 import Grid from '@/components/Grid'
 
@@ -39,7 +41,9 @@ export default async function Page() {
         perfect component to enhance your site's functionality and aesthetics.
       </Banner>
 
-      <Grid components={components} filterable />
+      <Suspense>
+        <Grid components={components} filterable />
+      </Suspense>
     </>
   )
 }
